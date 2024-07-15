@@ -27,7 +27,7 @@ entity neorv32_test_setup_bootloader is
     clk_i       : in  std_ulogic; -- global clock, rising edge
     rstn_i      : in  std_ulogic; -- global reset, low-active, async
     -- GPIO --
-    gpio_o      : out std_ulogic_vector(7 downto 0); -- parallel output
+    gpio_o      : out std_ulogic_vector(3 downto 0); -- parallel output
     -- UART0 --
     uart0_txd_o : out std_ulogic; -- UART0 send data
     uart0_rxd_i : in  std_ulogic  -- UART0 receive data
@@ -58,7 +58,7 @@ begin
     MEM_INT_DMEM_EN              => true,              -- implement processor-internal data memory
     MEM_INT_DMEM_SIZE            => MEM_INT_DMEM_SIZE, -- size of processor-internal data memory in bytes
     -- Processor peripherals --
-    IO_GPIO_NUM                  => 8,                 -- number of GPIO input/output pairs (0..64)
+    IO_GPIO_NUM                  => 4,                 -- number of GPIO input/output pairs (0..64)
     IO_MTIME_EN                  => true,              -- implement machine system timer (MTIME)?
     IO_UART0_EN                  => true               -- implement primary universal asynchronous receiver/transmitter (UART0)?
   )
@@ -74,7 +74,7 @@ begin
   );
 
   -- GPIO output --
-  gpio_o <= con_gpio_o(7 downto 0);
+  gpio_o <= con_gpio_o(3 downto 0);
 
 
 end architecture;
